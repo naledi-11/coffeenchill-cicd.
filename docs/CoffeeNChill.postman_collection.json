@@ -1,0 +1,272 @@
+{
+  "info": {
+    "name": "CoffeeNChill - Part 1 API",
+    "description": "Menu CRUD (Azure Table Storage) and Staff Document upload/list/download (Azure Blob Storage, standing in for the File Share - see README.md for why). Uses the {{baseUrl}} collection variable. Run the 'Create' requests under Menu first to seed sample data before testing Get/Update/Delete.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:7008/api" }
+  ],
+  "item": [
+    {
+      "name": "Menu",
+      "item": [
+        {
+          "name": "Create",
+          "item": [
+            {
+              "name": "Create - Espresso (Hot Drinks)",
+              "request": {
+                "method": "POST",
+                "header": [ { "key": "Content-Type", "value": "application/json" } ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PartitionKey\": \"Hot Drinks\",\n  \"RowKey\": \"COF-001\",\n  \"Name\": \"Espresso\",\n  \"Description\": \"Double shot of our house-blend espresso\",\n  \"Price\": 25.00,\n  \"IsAvailable\": true\n}"
+                },
+                "url": { "raw": "{{baseUrl}}/menu", "host": [ "{{baseUrl}}" ], "path": [ "menu" ] }
+              }
+            },
+            {
+              "name": "Create - Cappuccino (Hot Drinks)",
+              "request": {
+                "method": "POST",
+                "header": [ { "key": "Content-Type", "value": "application/json" } ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PartitionKey\": \"Hot Drinks\",\n  \"RowKey\": \"COF-002\",\n  \"Name\": \"Cappuccino\",\n  \"Description\": \"Espresso topped with steamed milk and thick foam\",\n  \"Price\": 32.00,\n  \"IsAvailable\": true\n}"
+                },
+                "url": { "raw": "{{baseUrl}}/menu", "host": [ "{{baseUrl}}" ], "path": [ "menu" ] }
+              }
+            },
+            {
+              "name": "Create - Caffe Latte (Hot Drinks)",
+              "request": {
+                "method": "POST",
+                "header": [ { "key": "Content-Type", "value": "application/json" } ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PartitionKey\": \"Hot Drinks\",\n  \"RowKey\": \"COF-003\",\n  \"Name\": \"Caffe Latte\",\n  \"Description\": \"Espresso with extra steamed milk and a light layer of foam\",\n  \"Price\": 34.00,\n  \"IsAvailable\": true\n}"
+                },
+                "url": { "raw": "{{baseUrl}}/menu", "host": [ "{{baseUrl}}" ], "path": [ "menu" ] }
+              }
+            },
+            {
+              "name": "Create - Iced Americano (Cold Drinks)",
+              "request": {
+                "method": "POST",
+                "header": [ { "key": "Content-Type", "value": "application/json" } ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PartitionKey\": \"Cold Drinks\",\n  \"RowKey\": \"COF-004\",\n  \"Name\": \"Iced Americano\",\n  \"Description\": \"Espresso shots poured over ice and cold water\",\n  \"Price\": 30.00,\n  \"IsAvailable\": true\n}"
+                },
+                "url": { "raw": "{{baseUrl}}/menu", "host": [ "{{baseUrl}}" ], "path": [ "menu" ] }
+              }
+            },
+            {
+              "name": "Create - Iced Caramel Macchiato (Cold Drinks)",
+              "request": {
+                "method": "POST",
+                "header": [ { "key": "Content-Type", "value": "application/json" } ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PartitionKey\": \"Cold Drinks\",\n  \"RowKey\": \"COF-005\",\n  \"Name\": \"Iced Caramel Macchiato\",\n  \"Description\": \"Vanilla-flavoured milk, espresso and a caramel drizzle over ice\",\n  \"Price\": 38.00,\n  \"IsAvailable\": true\n}"
+                },
+                "url": { "raw": "{{baseUrl}}/menu", "host": [ "{{baseUrl}}" ], "path": [ "menu" ] }
+              }
+            },
+            {
+              "name": "Create - Butter Croissant (Pastries)",
+              "request": {
+                "method": "POST",
+                "header": [ { "key": "Content-Type", "value": "application/json" } ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PartitionKey\": \"Pastries\",\n  \"RowKey\": \"PST-001\",\n  \"Name\": \"Butter Croissant\",\n  \"Description\": \"Flaky, all-butter croissant baked fresh daily\",\n  \"Price\": 22.00,\n  \"IsAvailable\": true\n}"
+                },
+                "url": { "raw": "{{baseUrl}}/menu", "host": [ "{{baseUrl}}" ], "path": [ "menu" ] }
+              }
+            },
+            {
+              "name": "Create - Blueberry Muffin (Pastries)",
+              "request": {
+                "method": "POST",
+                "header": [ { "key": "Content-Type", "value": "application/json" } ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PartitionKey\": \"Pastries\",\n  \"RowKey\": \"PST-002\",\n  \"Name\": \"Blueberry Muffin\",\n  \"Description\": \"Soft muffin loaded with fresh blueberries\",\n  \"Price\": 24.00,\n  \"IsAvailable\": false\n}"
+                },
+                "url": { "raw": "{{baseUrl}}/menu", "host": [ "{{baseUrl}}" ], "path": [ "menu" ] }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get All Menu Items",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/menu", "host": [ "{{baseUrl}}" ], "path": [ "menu" ] }
+          }
+        },
+        {
+          "name": "Get Menu Items By Category - Hot Drinks",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/menu/category/Hot Drinks",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "menu", "category", "Hot Drinks" ]
+            }
+          }
+        },
+        {
+          "name": "Get Menu Items By Category - Cold Drinks",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/menu/category/Cold Drinks",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "menu", "category", "Cold Drinks" ]
+            }
+          }
+        },
+        {
+          "name": "Get Menu Items By Category - Pastries",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/menu/category/Pastries",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "menu", "category", "Pastries" ]
+            }
+          }
+        },
+        {
+          "name": "Update Menu Item - Espresso price change",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"Espresso\",\n  \"Description\": \"Double shot of our house-blend espresso\",\n  \"Price\": 27.50,\n  \"IsAvailable\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/menu/Hot Drinks/COF-001",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "menu", "Hot Drinks", "COF-001" ]
+            }
+          }
+        },
+        {
+          "name": "Update Menu Item - Mark Blueberry Muffin available",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"Blueberry Muffin\",\n  \"Description\": \"Soft muffin loaded with fresh blueberries\",\n  \"Price\": 24.00,\n  \"IsAvailable\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/menu/Pastries/PST-002",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "menu", "Pastries", "PST-002" ]
+            }
+          }
+        },
+        {
+          "name": "Delete Menu Item - Iced Caramel Macchiato",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/menu/Cold Drinks/COF-005",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "menu", "Cold Drinks", "COF-005" ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Documents",
+      "item": [
+        {
+          "name": "Upload Staff Document - Staff Handbook",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "file", "type": "file", "src": [] }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/documents/upload",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "documents", "upload" ]
+            },
+            "description": "In Postman: Body tab -> form-data -> key 'file' -> change type from Text to File -> pick a document from your machine, e.g. staff-handbook.pdf."
+          }
+        },
+        {
+          "name": "Upload Staff Document - Leave Policy",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "file", "type": "file", "src": [] }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/documents/upload",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "documents", "upload" ]
+            },
+            "description": "Pick a second file to upload, so the List endpoint has more than one document to show."
+          }
+        },
+        {
+          "name": "List Staff Documents",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/documents", "host": [ "{{baseUrl}}" ], "path": [ "documents" ] }
+          }
+        },
+        {
+          "name": "Download Staff Document - Staff Handbook",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/documents/download/staff-handbook.pdf",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "documents", "download", "staff-handbook.pdf" ]
+            },
+            "description": "Replace 'staff-handbook.pdf' with the exact file name returned by the List endpoint if you uploaded something else."
+          }
+        },
+        {
+          "name": "Upload With No File (expect 400)",
+          "request": {
+            "method": "POST",
+            "body": { "mode": "formdata", "formdata": [] },
+            "url": {
+              "raw": "{{baseUrl}}/documents/upload",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "documents", "upload" ]
+            }
+          }
+        },
+        {
+          "name": "Download Missing File (expect 404)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/documents/download/does-not-exist.pdf",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "documents", "download", "does-not-exist.pdf" ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

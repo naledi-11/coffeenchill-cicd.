@@ -1,0 +1,38 @@
+﻿REFERENCES.
+
+Microsoft (2026) Azure Functions documentation.
+Available at: https://learn.microsoft.com/en-us/azure/azure-functions/
+(Accessed: 16 August 2026).
+
+Microsoft (2026) Azure Functions HTTP trigger.
+Available at: https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger
+(Accessed: 16 August 2026).
+
+Microsoft (2026) Azure Tables input bindings for Azure Functions.
+Available at: https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-table-input
+(Accessed: 16 August 2026).
+
+Microsoft (2026) ITableEntity Interface (Azure.Data.Tables).
+Available at: https://learn.microsoft.com/en-us/dotnet/api/azure.data.tables.itableentity
+(Accessed: 16 August 2026).
+
+Microsoft (2026) Azure Functions Core Tools reference.
+Available at: https://learn.microsoft.com/en-us/azure/azure-functions/functions-core-tools-reference
+(Accessed: 16 August 2026).
+
+Microsoft (2026) Use Azurite emulator for local Azure Storage development.
+Available at: https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite
+(Accessed: 16 August 2026).
+
+Microsoft (2026) Quickstart: Azure Blob Storage client library for .NET.
+Available at: https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet
+(Accessed: 18 August 2026).
+
+Microsoft (2026) Upload, download, and list blobs with the .NET client library.
+Available at: https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-upload
+(Accessed: 18 August 2026).
+
+Azure (2026) Azurite open-source emulator - GitHub issue: File service support.
+Available at: https://github.com/Azure/Azurite/issues/113
+(Accessed: 18 August 2026).
+
